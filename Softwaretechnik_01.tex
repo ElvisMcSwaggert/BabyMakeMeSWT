@@ -1,0 +1,151 @@
+%Doc
+\documentclass[a4paper,12pt]{article}
+
+
+%Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=4cm]{geometry}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+\usetikzlibrary{arrows,automata,positioning}
+
+
+%Code
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\lstset{literate =%
+	{ä}{{\"a}}1
+}
+
+
+%Daten
+\author {Daoud Ali 376352, Cihan Orhan 377061\\ Luca Gaudino 379780, Paul Sonnleitner}
+\date {}
+\title	{\textbf{Softwaretechnik}\\
+		Aufgabenblatt \RM{1}
+		}
+
+
+%Commands
+\newcommand{\aufgabe}[1]{\section*{Aufgabe #1}}
+\newcommand{\apt}[1]{\subsection*{#1)}}
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{}}}
+
+
+\begin{document}
+
+\doublespacing
+\maketitle
+\onehalfspacing
+
+\aufgabe{1}
+Gegeben sei eine Software mit $n$ Modulen. Wir modellieren die Anzahl der ausfallenden Softwaremodule mit einer binomialverteilten Zufallsvariablen $X$. Dabei fällt eine der Komponenten mit einer Wahrscheinlichkeit von $p=0,01$ aus. Die Wahrscheinlichkeit, dass keine der Komponenten ausfällt ist gegeben durch:
+\[
+P(X=0) = \binom{n}{0} \cdot p^0 \cdot (1-p)^n =0,99^n
+\]
+Damit die Software eher Einen, als keinen Fehler enthält muss die Software so viele Komponenten n enthalten, dass die Wahrscheinlichkeit $P(X=0)$ unter $0,5$ sinkt. \\
+\[
+P(X=0) < 0,5 \Leftrightarrow 0,99^n < 0,5 \Leftrightarrow n > \log_{0,99}(0,5) \Leftrightarrow n > 68,96...
+\]
+Somit muss das System mindestens 69 Komponenten enthalten, damit Wahrscheinlichkeit eines oder mehrere Fehler größer als 50\% ist.
+
+
+\aufgabe{2}
+\begin{itemize}
+\item Benutzer der Software schulen: Test-Integration\\
+Nach der Fertigstellung der Software.
+\item Qualitätssicherung des Pflichtenheftes durchführen: Analyse\\
+Nach der Erstellung wird das Pflichtenheft nochmal überprüft/verifiziert.
+\item Gesetzliche Rahmenbedingungen prüfen: Analyse\\
+Am Anfang zu überprüfen um das Projekt danach auszurichten.
+\item Konzept und Prototyp einer Benutzeroberfläche erstellen: Analyse, Entwurf\\
+Um die Anforderungen des Kunden besser zu verstehen und als Entwurf für das zu bauende Produkt.
+\item Entwicklerteam zusammenstellen: Analyse, Entwurf, Implementierung\\
+Das Team wird von Anfang an zusammengestellt. Dabei können aber Programmierer auch erst in der Implementierungsphase hinzukommen. 
+\item Code eines Programmmoduls debuggen: Implementierung, Test\\
+Um sicherzugehen, dass das Modul korrekt funktioniert. Falls Fehler beim testen gefunden werden.
+\item Zwei Subsysteme verbinden und testen: Test-Integration\\
+Nach dem die Subsysteme implementiert und einzeln getestet sind, sich werden sie verbunden.
+\item Termine und Kosten des Projektes planen: Entwurf\\
+Nach der Analyse wird das Projekt durchgeplant.
+\item Datenstrukturen festlegen: Entwurf\\
+Die Datenstrukturen werden vor der Implementierung bereits festgelegt.
+\item Vorhandene Altlasten des Kunden analysieren: Analyse\\
+Vorherige Software analysieren und in das neue Projekt mit einbeziehen.
+\item Schnittstellen von Programmmodulen definieren: Entwurf\\
+Um Interaktion und aufbauende Funktionalitäten tu implementieren.  
+\item Leistung der Entwickler bewerten und belohnen: Implementierung, Test-Integration\\
+Bei Implementierung und Test zeigt sich die Effizienz der einzelnen Entwickler.
+\item Software an neue Umgebung anpassen: Wartung\\
+Falls sich nach der Integration etwas an der Umgebung ändert muss die Software angepasst werden. Mögliche Fehler oder Performanceverluste.
+\item Kunden eine Rechnung stellen: keine Zuordnung\\
+Nach dem Entwurf erste Prognose. Nach der Integration, Rechnung für das Produkt. Dann Wartungsvertrag.
+\item Test-Eingabedaten für ein Programmmodul ermitteln: Implementierung\\
+Vor der Implementierung z.B. XP oder vor dem Testen.
+\item Strukturmodell des gesamten Softwaresystems entwerfen: Entwurf\\
+Struktur muss für eine geordnete Implementierung feststehen.
+\item Dokumentation des Projektablaufes bewerten und archivieren: keine Zuordnung\\
+Immer sinnvoll, um aus Fehlern zu lernen. Für das aktuelle oder folgende Projekte.
+\item Nach bereits vorhandenen, wiederverwendbaren Software-Bibliotheken suchen: Entwurf\\
+Um Kosten und Zeit durch Wiederverwendung einzusparen.
+\item Performance-Prognose des Softwaresystems erstellen: Entwurf\\
+Um den Entwurf performance-technisch anzupassen.
+\item Programmcode kommentieren: Entwurf, Implementierung\\
+Sinnvoll vor und während der Implementierung, um TODO's festzuhalten und den Programmcode nachzuvollziehen.
+\end{itemize}
+\aufgabe{3}
+
+\textbf{SCRUM}
+\begin{itemize}
+\item Transparent $\rightarrow$ Fortschritt und Probleme werden täglich festgehalten
+\item feste Zeitintervalle
+\end{itemize}
+\textbf{XP}
+\begin{itemize}
+\item Sehr effizient
+\item Nicht für Großprojekte geeignet
+\end{itemize}
+
+\aufgabe{4}
+\textbf{Funktionale Anforderungen}
+\begin{itemize}
+\item Mechanismus zur Synchronisation von Veranstaltungen, Lernräumen etc. mit dem vorhandenen Management System
+\item Erstellung und Verwaltung eines Benutzerprofils
+\item Funktion zur Ermittlung potentieller Übungspartner mit Zugriff auf den Standort der Geräte
+\item Funktion zum Versenden von Nachrichten und Anfragen\\
+\end{itemize}
+\textbf{Nicht-funktionale Anforderungen}
+\begin{itemize}
+\item Automatische Synchronisation täglich, manuelle Synchronisation möglich
+\item Verwendung der Daten gemäß Datenschutzrichtlinien
+\item Auf den Standort darf nur unter Einverständnis des Benutzers zugegriffen werden.
+\item Senden und Empfangen einer Nachricht darf nicht länger als 10s dauern.
+\item Die App muss mit Android und iOS kompatibel sein.
+\end{itemize}
+
+\end{document}
